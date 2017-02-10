@@ -43,7 +43,7 @@ public class StringGenerator implements Generator<String> {
 
     /**
      * Static block.
-     * Pattern initialization.
+     * Default pattern initialization.
      */
     static {
         DEFAULT_PATTERN = (
