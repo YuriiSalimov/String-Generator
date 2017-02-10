@@ -57,8 +57,7 @@ public class StringGenerator implements Generator<String> {
      * Default constructor.
      */
     public StringGenerator() {
-        this.pattern = DEFAULT_PATTERN;
-        this.length = DEFAULT_LENGTH;
+        this(DEFAULT_PATTERN, DEFAULT_LENGTH);
     }
 
     /**
@@ -67,8 +66,7 @@ public class StringGenerator implements Generator<String> {
      * @param length a length to generate string.
      */
     public StringGenerator(final long length) {
-        this.pattern = DEFAULT_PATTERN;
-        this.length = length > 0 ? length : DEFAULT_LENGTH;
+        this(DEFAULT_PATTERN, length);
     }
 
     /**
@@ -76,9 +74,8 @@ public class StringGenerator implements Generator<String> {
      *
      * @param pattern a pattern to generated new string.
      */
-    public StringGenerator(final String pattern) {
-        this.pattern = pattern != null ? pattern.toCharArray() : DEFAULT_PATTERN;
-        this.length = DEFAULT_LENGTH;
+    public StringGenerator(final char[] pattern) {
+        this(pattern, DEFAULT_LENGTH);
     }
 
     /**
@@ -87,8 +84,8 @@ public class StringGenerator implements Generator<String> {
      * @param pattern a pattern to generated new string.
      * @param length  a length to generate string.
      */
-    public StringGenerator(final String pattern, final long length) {
-        this.pattern = pattern != null ? pattern.toCharArray() : DEFAULT_PATTERN;
+    public StringGenerator(final char[] pattern, final long length) {
+        this.pattern = pattern != null ? pattern : DEFAULT_PATTERN;
         this.length = length > 0 ? length : DEFAULT_LENGTH;
     }
 
