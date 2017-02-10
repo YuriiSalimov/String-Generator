@@ -10,6 +10,10 @@ import java.util.Random;
  */
 public class StringGenerator implements Generator<String> {
 
+    /**
+     * An instance of Random class is used to generate
+     * a stream of pseudorandom numbers.
+     */
     private final static Random RANDOM = new Random();
 
     /**
