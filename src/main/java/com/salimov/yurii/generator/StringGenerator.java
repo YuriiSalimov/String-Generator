@@ -85,7 +85,11 @@ public class StringGenerator implements Generator<String> {
      * @param length  a length to generate string.
      */
     public StringGenerator(final char[] pattern, final long length) {
-        this.pattern = pattern != null ? pattern : DEFAULT_PATTERN;
+        if ((pattern != null) && (pattern.length > 0)) {
+            this.pattern = pattern;
+        } else {
+            this.pattern = DEFAULT_PATTERN;
+        }
         this.length = length > 0 ? length : DEFAULT_LENGTH;
     }
 
