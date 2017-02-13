@@ -14,7 +14,7 @@ public class StringGenerator implements Generator<String> {
      * An instance of Random class is used to generate
      * a stream of pseudorandom numbers.
      */
-    private final static Random RANDOM = new Random();
+    private final static Random RANDOM;
 
     /**
      * Default pattern to generated new string.
@@ -24,7 +24,7 @@ public class StringGenerator implements Generator<String> {
     /**
      * Default length to generate string.
      */
-    private final static long DEFAULT_LENGTH = 10;
+    private final static long DEFAULT_LENGTH;
 
     /**
      * Pattern to generated new string.
@@ -46,11 +46,13 @@ public class StringGenerator implements Generator<String> {
      * Default pattern initialization.
      */
     static {
+        RANDOM = new Random();
         DEFAULT_PATTERN = (
                 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
                         "abcdefghijklmnopqrstuvwxyz" +
                         "0123456789"
         ).toCharArray();
+        DEFAULT_LENGTH = 10;
     }
 
     /**
