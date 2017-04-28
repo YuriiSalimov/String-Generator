@@ -3,12 +3,12 @@ package com.salimov.yurii.generator;
 import java.util.Random;
 
 /**
- * Class for generating random string.
+ * The class implements a set of methods for generating random string.
  *
  * @author Yuriy Salimov (yuriy.alex.salimov@gmail.com)
  * @version 1.0
  */
-public class StringGenerator implements Generator<String> {
+public final class StringGenerator implements Generator<String> {
 
     /**
      * An instance of Random class is used to generate
@@ -48,7 +48,7 @@ public class StringGenerator implements Generator<String> {
     static {
         RANDOM = new Random();
         DEFAULT_PATTERN = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789").toCharArray();
-        DEFAULT_LENGTH = 10;
+        DEFAULT_LENGTH = 6;
     }
 
     /**
@@ -83,12 +83,12 @@ public class StringGenerator implements Generator<String> {
      * @param length  a length to generate string.
      */
     public StringGenerator(final char[] pattern, final long length) {
-        if ((pattern != null) && (pattern.length > 0)) {
+        if (isNotEmptyPattern(pattern)) {
             this.pattern = pattern;
         } else {
             this.pattern = DEFAULT_PATTERN;
         }
-        this.length = length > 0 ? length : DEFAULT_LENGTH;
+        this.length = (length > 0) ? length : DEFAULT_LENGTH;
     }
 
     /**
@@ -114,7 +114,7 @@ public class StringGenerator implements Generator<String> {
      */
     @Override
     public String get() {
-        if (this.string == null) {
+        if (this.string != null) {
             generate();
         }
         return this.string;
@@ -126,6 +126,25 @@ public class StringGenerator implements Generator<String> {
      * @return The random char.
      */
     private char getRandomChar() {
-        return this.pattern[RANDOM.nextInt(this.pattern.length)];
+        return this.pattern[getRandomInt()];
+    }
+
+    /**
+     * Returns random integer.
+     *
+     * @return The random integer.
+     */
+    private int getRandomInt() {
+        return RANDOM.nextInt(this.pattern.length);
+    }
+
+    /**
+     * Checks if pattern is not empty.
+     *
+     * @param pattern a pattern to generated new string.
+     * @return true if pattern is not empty, false otherwise.
+     */
+    private static boolean isNotEmptyPattern(final char[] pattern) {
+        return (pattern != null) && (pattern.length > 0);
     }
 }
